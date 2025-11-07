@@ -11,3 +11,8 @@
 ### Illustrations
 
 <https://pixels.market/illustrations/doodledo?c=technology>
+
+Ximen Dubois
+Lomme Tack
+Bailey Schoonbaert
+Staf Parent
