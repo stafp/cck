@@ -1,20 +1,18 @@
 ---
+import { Image } from "astro:assets";
 import ArrowLink from "./ArrowLink.astro";
-
-const { theme = "grey" } = Astro.props;
+const { workshop } = Astro.props;
 ---
 
-<article class={`workshop-card workshop-card--${theme}`}>
+<article>
   <div>
-   <h3><span>{##TITLE##}</span></h3>
+    <h3><span>{workshop.data.title}</span></h3>
     <ArrowLink
       class="link"
-      href={`/workshops/${##ID##}`}
+      href={`/workshops/${workshop.slug}`}
       title="Learn more"
     />
-    <img
-     class="image" src={##IMAGE##} alt=""
-    />
+    <Image class="image" src={workshop.data.image} alt="" />
   </div>
 </article>
 
@@ -30,6 +28,8 @@ const { theme = "grey" } = Astro.props;
     border-radius: var(--br-l);
 
     padding: var(--sp-xl);
+    container-type: inline-size;
+    container-name: card;
   }
 
   div {
@@ -62,7 +62,7 @@ const { theme = "grey" } = Astro.props;
     aspect-ratio: 1;
   }
 
-  @media (min-width: 30rem) {
+  @container card (min-width: 30rem) {
     div {
       grid-template-areas:
         "title img"
@@ -70,22 +70,26 @@ const { theme = "grey" } = Astro.props;
     }
   }
 
-  .workshop-card--green {
-    background-color: var(--color-primary);
+  @container style(--card-theme:green) {
+    article {
+      background-color: var(--color-primary);
+    }
+
+    h3 span {
+      background-color: var(--color-white);
+    }
   }
 
-  .workshop-card--green h3 span {
-    background-color: var(--color-white);
-  }
+  @container style(--card-theme:black) {
+    article {
+      --arrow-color-front: var(--color-text);
+      --arrow-color-black: var(--color-white);
+      --arrow-color-text: var(--color-white);
+      background-color: var(--color-black);
+    }
 
-  .workshop-card--black {
-    --arrow-color-front: var(--color-text);
-    --arrow-color-black: var(--color-white);
-    --arrow-color-text: var(--color-white);
-    background-color: var(--color-black);
-  }
-
-  .workshop-card--black h3 span {
-    background-color: white;
+    h3 span {
+      background-color: white;
+    }
   }
 </style>
