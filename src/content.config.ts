@@ -30,8 +30,17 @@ const foundationsCollection = defineCollection({
     }),
 });
 
+const newsCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/news" }),
+  schema: z.object({
+    title: z.string(), // Title of the news article
+    date: z.date(),  // Date of the news article
+  }),
+});
+
 export const collections = {
   team: teamCollection,
   foundations: foundationsCollection,
   workshops: workshopsCollection,
+  news: newsCollection,
 };
