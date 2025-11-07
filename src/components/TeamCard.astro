@@ -16,7 +16,7 @@ const { team } = Astro.props;
       />
     </div>
   </div>
-  <p class="name"><a href={`/team/${team.slug}`}>{team.data.name}</a></p>
+  <p class="name"><a href={`/team/${team.id}`}>{team.data.name}</a></p>
   <p class="function">{team.data.function}</p>
   <p class="bio">{team.data.bio}</p>
 </article>
